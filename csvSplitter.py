@@ -19,13 +19,10 @@ for partindex in partindices:
 	j+=1
 	print("Working on file:",filename[:-4]+'_split_'+str(j)+'.csv')
 	line = lines[0]
-	line+=','
 	matches = re.finditer(',',line)
-	ind1 = [match.start() for match in matches]
-	ind = [0]
-	for element in ind1:
-		ind.append(element)
-	firstpart = [line[0:ind1[0]].split()]
+	ind = [match.start() for match in matches]
+	ind.append(len(line)-1)
+	firstpart = [line[0:ind[0]].split()]
 	parts = [line[ind[i]:ind[i+1]][1:].strip() for i in range(len(ind)-1)]
 	parts[0] = line[0]+parts[0]
 	with open(filename[:-4]+'_split_'+str(j)+'.csv', mode='a',encoding='utf-8') as csvobject:
@@ -33,13 +30,10 @@ for partindex in partindices:
 		csv_writer.writerow(parts)
 
 	for line in lines[partindex:partindex+splitsize-1]:
-		line+=','
 		matches = re.finditer(',',line)
-		ind1 = [match.start() for match in matches]
-		ind = [0]
-		for element in ind1:
-			ind.append(element)
-		firstpart = [line[0:ind1[0]].split()]
+		ind = [match.start() for match in matches]
+		ind.append(len(line)-1)
+		firstpart = [line[0:ind[0]].split()]
 		parts = [line[ind[i]:ind[i+1]][1:].strip() for i in range(len(ind)-1)]
 		parts[0] = line[0]+parts[0]
 		with open(filename[:-4]+'_split_'+str(j)+'.csv', mode='a',encoding='utf-8') as csvobject:
