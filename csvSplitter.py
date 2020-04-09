@@ -19,6 +19,7 @@ for partindex in partindices:
 	j+=1
 	print("Working on file:",filename[:-4]+'_split_'+str(j)+'.csv')
 	line = lines[0]
+	line+=','
 	matches = re.finditer(',',line)
 	ind1 = [match.start() for match in matches]
 	ind = [0]
@@ -32,6 +33,7 @@ for partindex in partindices:
 		csv_writer.writerow(parts)
 
 	for line in lines[partindex:partindex+splitsize-1]:
+		line+=','
 		matches = re.finditer(',',line)
 		ind1 = [match.start() for match in matches]
 		ind = [0]
