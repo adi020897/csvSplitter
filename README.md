@@ -1,6 +1,11 @@
 # csvSplitter
 This tool can be used to split a csv file into multiple csv files based on the number of rows the user needs to have in a single file.
 
+## Prerequisites
+1. Python 'pandas' library.
+2. Python 're' library.
+3. Python 'csv' library
+
 ## Usage
 
 1. Place csvSplitter.py in the same directory as the data you wish to split.
